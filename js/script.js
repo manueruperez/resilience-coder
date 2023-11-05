@@ -5,9 +5,18 @@
 
   $(window).on("load", function () {
     // Site loader
-
     $(".loader-inner").fadeOut();
-    $(".loader").delay(200).fadeOut("slow");
+    $(".loader")
+      .delay(200)
+      .fadeOut("slow", function () {
+        // Esta función de callback se ejecuta después de que el loader se desvanece
+        $("html, body").animate(
+          {
+            scrollTop: $("#blog-page-content").offset().top,
+          },
+          "slow"
+        );
+      });
   });
 
   // Scroll to
